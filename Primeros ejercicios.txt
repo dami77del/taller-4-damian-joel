@@ -1,0 +1,53 @@
+using System;
+
+namespace Ejercicio1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            //1
+            String nombre;
+            String apellido;
+            
+            Console.WriteLine("Escriba su nombre");
+            nombre = Console.ReadLine();
+            Console.WriteLine("Escriba su apellido");
+            apellido = Console.ReadLine();
+            Console.WriteLine(nombre + " " + apellido);
+
+            //2
+			String nom;
+            int edad;
+            Console.WriteLine("Escriba su nombre");
+            nom = Console.ReadLine();
+            Console.WriteLine("Escriba su edad");
+            edad = int.Parse(Console.ReadLine());
+            if (edad >= 18) {
+                Console.WriteLine(nom + " puede pasar");
+            } else {
+                Console.WriteLine(nom + " tiene prohibido el paso");
+            }
+            
+            //3
+            int a;
+            int b;
+            Console.WriteLine("Escriba un número");
+            a = int.Parse(Console.ReadLine());
+            Console.WriteLine("Escriba otro número");
+            b = int.Parse(Console.ReadLine());
+            Console.WriteLine("El MCD es = " + MCD(a, b));
+            Console.ReadLine();
+
+            int MCD(int x, int y) {
+                if(y == 0) {
+                    return x;
+                } else {
+                    return MCD(y, x % y);
+                }
+            }
+            
+        }
+    }
+}

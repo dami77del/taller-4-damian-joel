@@ -1,0 +1,81 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2 {
+    class Program {
+        static void Main(string[] args) {
+            String cadena = "";
+            String primero = "";
+            String operacion = "";
+            String segundo = "";
+            int res = 0;
+            int save = 0;
+            Console.WriteLine("Escriba una operación");
+            cadena = Console.ReadLine();
+            while (cadena != "") {
+                foreach (var item in cadena) {
+
+                    if (int.TryParse(item.ToString(), out int j)) {
+                        if (operacion == "") {
+                            primero += j.ToString();
+                        } else {
+                            segundo += j.ToString();
+                        }
+                    } else {
+                        if (item.ToString() == "R") {
+                            if (operacion == "") {
+                                primero = save.ToString();
+                            } else {
+                                segundo = save.ToString();
+                            }
+                        } else {
+                            if (operacion == "") {
+                                operacion = item.ToString();
+                            } else {
+                                res = Calcular(int.Parse(primero), int.Parse(segundo), operacion);
+                                primero = res.ToString();
+                                operacion = item.ToString();
+                                segundo = "";
+                            }
+                        }
+                    }
+                }
+                //Console.WriteLine(primero + " " + operacion + " " + segundo);
+                res = Calcular(int.Parse(primero), int.Parse(segundo), operacion);
+                save = res;
+                Console.WriteLine("Resultado: " + res.ToString());
+                primero = "";
+                segundo = "";
+                operacion = "";
+                Console.WriteLine("Escriba una operación");
+                cadena = Console.ReadLine();
+            }
+        }
+
+        public static int Calcular(int a, int b, String op) {
+            int r = 0;
+            switch (op) {
+                case "+":
+                    r = a + b;
+                    break;
+                case "-":
+                    r = a - b;
+                    break;
+                case "*":
+                    r = a * b;
+                    break;
+                case "/":
+                    if (b != 0) {
+                        r = a / b;
+                    } else {
+                        Console.WriteLine("ERROR: No se puede dividir por cero");
+                    }
+                    break;
+            }
+            return r;
+        }
+    }
+}

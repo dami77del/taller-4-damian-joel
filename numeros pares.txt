@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1 {
+    class Program {
+        static void Main(string[] args) {
+
+            List<string> lista = new List<string>();
+            int suma = 0;
+
+            for (int i = 1; i <= 100; i++) {
+                if(i%2 == 0) {
+                    lista.Add(i.ToString());
+                }
+            }
+            foreach(var item in lista) {
+                suma += int.Parse(item);
+            }
+            Console.WriteLine("Cantidad total = " + lista.Count());
+            Console.WriteLine("Promedio total = " + suma/ lista.Count());
+            Console.WriteLine("Lista = ");
+            foreach (var item in lista) {
+                Console.Write(item + " ");
+            }
+            Console.ReadKey();
+
+
+        }
+    }
+}
